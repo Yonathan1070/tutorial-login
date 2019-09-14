@@ -32,7 +32,7 @@ public class LoginSesion implements ILoginSesion {
     public void agregarUsuarios(){
         usuario1 = new Usuario("Alejandro", "Administrador", "alejo", "123456");
         usuario2 = new Usuario("Lorena", "Director", "lore", "987654");
-        usuario3 = new Usuario("David", "Trabajdor", "deivid", "654321");
+        usuario3 = new Usuario("David", "Trabajador", "deivid", "654321");
         
         listaUsuarios.add(usuario1);
         listaUsuarios.add(usuario2);

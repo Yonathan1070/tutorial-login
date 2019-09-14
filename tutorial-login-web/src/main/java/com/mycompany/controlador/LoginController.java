@@ -42,6 +42,7 @@ public class LoginController implements Serializable{
         ejb.agregarUsuarios();
         user = ejb.obtenerUsuario(username, password);
         if(user!=null){
+            FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", user);
             return user.getRol().toLowerCase()+"/inicio.xhtml?faces-redirect=true";
         }else{
             return "login.xhtml?faces-redirect=true";
