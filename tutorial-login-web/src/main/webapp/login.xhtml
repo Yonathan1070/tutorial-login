@@ -22,7 +22,7 @@
                     <p:message for="password" showDetail="true"/>
                 </p:panelGrid>
                 <p:separator/>
-                <p:commandButton value="#{msg.btnEntrar}" update=":login" action="#{loginController.iniciarSesion()}" />
+                <p:commandButton value="#{msg.btnEntrar}" update=":login, :login:growl" action="#{loginController.iniciarSesion()}" />
             </p:panel>
         </h:form>
     </h:body>

@@ -13,6 +13,9 @@
             <base-name>com.mycompany.propiedades.mensajes</base-name>
             <var>msg</var>
         </resource-bundle>
-        
+        <resource-bundle>
+		<base-name>net.javabeat.jsf.application</base-name>
+		<var>err</var>
+	</resource-bundle>
     </application>
 </faces-config>
