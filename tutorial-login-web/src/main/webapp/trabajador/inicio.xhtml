@@ -5,14 +5,14 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Trabajador</title>
+        <title>#{inicioDirectorController.user.rol}</title>
         <f:event type="preRenderView" listener="#{inicioDirectorController.validarSesion()}" />
     </h:head>
     <h:body>
         <h:form>
-            <p:panel header="Bienvenido">
+            <p:panel header="#{msg.msgBienvenida}">
                 <h1>#{inicioDirectorController.user.rol} #{inicioDirectorController.user.nombres}</h1>
-                <p:commandButton value="Cerrar Sesión" action="#{inicioAdministradorController.cerrarSesion()}" />
+                <p:commandButton value="#{msg.btnCerrar}" action="#{inicioAdministradorController.cerrarSesion()}" />
             </p:panel>
         </h:form>
     </h:body>

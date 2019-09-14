@@ -4,25 +4,25 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Inicio de Sesión</title>
+        <title>#{msg.tituloLogin}</title>
     </h:head>
     <h:body>
         <h:form id="login">
             <p:growl id="growl" showDetail="true" />
             <p:messages id="msg" showDetail="true" />
-            <p:panel header="Inicio de Sesión">
+            <p:panel header="#{msg.panelLoginHeader}">
                 <p:panelGrid columns="3">
-                    <p:outputLabel for="username" value="Nombre de Usuario" />
+                    <p:outputLabel for="username" value="#{msg.lblUsername}" />
                     <p:inputText id="username" value="#{loginController.username}" required="true" />
                     <p:message for="username" showDetail="true"/>
                 </p:panelGrid>
                 <p:panelGrid columns="3">
-                    <p:outputLabel for="password" value="Contraseña" />
+                    <p:outputLabel for="password" value="#{msg.lblPassword}" />
                     <h:inputSecret id="password" value="#{loginController.password}" required="true" />
                     <p:message for="password" showDetail="true"/>
                 </p:panelGrid>
                 <p:separator/>
-                <p:commandButton value="Entrar" update=":login" action="#{loginController.iniciarSesion()}" />
+                <p:commandButton value="#{msg.btnEntrar}" update=":login" action="#{loginController.iniciarSesion()}" />
             </p:panel>
         </h:form>
     </h:body>
