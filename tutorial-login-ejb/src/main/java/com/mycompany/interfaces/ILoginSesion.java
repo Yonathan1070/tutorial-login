@@ -5,7 +5,7 @@
  */
 package com.mycompany.interfaces;
 
-import com.mycompany.dto.Usuario;
+import com.mycompany.dto.DTOUsuario;
 import javax.ejb.Local;
 
 /**
@@ -15,5 +15,5 @@ import javax.ejb.Local;
 @Local
 public interface ILoginSesion {
     public void agregarUsuarios();
-    public Usuario obtenerUsuario(String username, String password);
+    public DTOUsuario obtenerUsuario(String username, String password);
 }

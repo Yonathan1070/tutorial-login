@@ -11,17 +11,35 @@ import java.io.Serializable;
  *
  * @author Yonathan
  */
-public class Usuario implements Serializable{
+public class DTOUsuario implements Serializable{
+    
+    private int id;
     private String nombres;
     private String rol;
     private String username;
     private String password;
 
-    public Usuario(String nombres, String rol, String username, String password) {
+    public DTOUsuario(String nombres, String rol, String username, String password) {
         this.nombres = nombres;
         this.rol = rol;
         this.username = username;
         this.password = password;
+    }
+
+    public DTOUsuario(int id, String nombres, String rol, String username, String password) {
+        this.id = id;
+        this.nombres = nombres;
+        this.rol = rol;
+        this.username = username;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombres() {

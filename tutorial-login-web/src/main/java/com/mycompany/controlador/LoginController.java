@@ -5,8 +5,9 @@
  */
 package com.mycompany.controlador;
 
-import com.mycompany.dto.Usuario;
+import com.mycompany.dto.DTOUsuario;
 import com.mycompany.interfaces.ILoginSesion;
+import com.mycompany.interfaces.IUsuarioFacadel;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +25,15 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class LoginController implements Serializable{
 
-    private List<Usuario> listaUsuarios;
+    private List<DTOUsuario> listaUsuarios;
     private String username;
     private String password;
     
     @EJB
     ILoginSesion ejb;
+    
+    @EJB
+    IUsuarioFacadel ejbUsuario;
     /**
      * Creates a new instance of LoginController
      */
@@ -38,9 +42,7 @@ public class LoginController implements Serializable{
     }
     
     public String iniciarSesion(){
-        Usuario user;
-        ejb.agregarUsuarios();
-        user = ejb.obtenerUsuario(username, password);
+        DTOUsuario user = ejbUsuario.login(username, password);
         if(user!=null){
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", user);
             return user.getRol().toLowerCase()+"/inicio.xhtml?faces-redirect=true";

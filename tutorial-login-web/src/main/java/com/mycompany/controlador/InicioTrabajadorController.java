@@ -5,7 +5,7 @@
  */
 package com.mycompany.controlador;
 
-import com.mycompany.dto.Usuario;
+import com.mycompany.dto.DTOUsuario;
 import java.io.Serializable;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -21,7 +21,7 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class InicioTrabajadorController implements Serializable{
 
-    private Usuario user;
+    private DTOUsuario user;
     /**
      * Creates a new instance of InicioTrabajadorController
      */
@@ -31,7 +31,7 @@ public class InicioTrabajadorController implements Serializable{
     public void validarSesion() {
         try {
             FacesContext faces = FacesContext.getCurrentInstance();
-            Usuario usuario = (Usuario) faces.getExternalContext().getSessionMap().get("usuario");
+            DTOUsuario usuario = (DTOUsuario) faces.getExternalContext().getSessionMap().get("usuario");
             if (usuario == null) {
                 FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
                         "Está tratando de ingresar violentamente al sitio.");
@@ -58,11 +58,11 @@ public class InicioTrabajadorController implements Serializable{
         return "login?faces-redirect=true";
     }
     
-    public Usuario getUser() {
+    public DTOUsuario getUser() {
         return user;
     }
 
-    public void setUser(Usuario user) {
+    public void setUser(DTOUsuario user) {
         this.user = user;
     }
 }
