@@ -15,6 +15,20 @@
                 <p:commandButton value="#{msg.btnCerrar}" action="#{inicioAdministradorController.cerrarSesion()}" />
             </p:panel>
         </h:form>
+        <h:form id="addInversor">
+            <p:panel header="#{msg.headerForm}">
+                <p:growl id="grAdd" showDetail="true" />
+                <p:panelGrid columns="3">
+                    <p:outputLabel for="nombre" value="#{msg.lblNombreInversor}"/>
+                    <p:inputText id="nombre" value="#{inicioAdministradorController.nombre}" required="true" />
+                    <p:message for="nombre" />
+                    <p:outputLabel for="cuenta" value="#{msg.lblNoCuenta}" />
+                    <p:inputText id="cuenta" value="#{inicioAdministradorController.cuenta}" required="true" />
+                    <p:message for="cuenta" />
+                </p:panelGrid>
+                <p:commandButton value="#{msg.btnGuardar}" action="#{inicioAdministradorController.agregarInversor()}" update=":addInversor, :addInversor:grAdd" />
+            </p:panel>
+        </h:form>
     </h:body>
 </html>
 

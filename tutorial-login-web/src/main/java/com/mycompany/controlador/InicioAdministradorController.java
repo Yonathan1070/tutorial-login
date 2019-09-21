@@ -5,8 +5,12 @@
  */
 package com.mycompany.controlador;
 
+import com.mycompany.dto.DTOCuenta;
+import com.mycompany.dto.DTOInversor;
 import com.mycompany.dto.DTOUsuario;
+import com.mycompany.interfaces.InversorFacadeLocal;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.enterprise.context.SessionScoped;
@@ -22,6 +26,12 @@ import javax.faces.context.FacesContext;
 public class InicioAdministradorController implements Serializable{
 
     private DTOUsuario user;
+    
+    private String nombre;
+    private String cuenta;
+    
+    @EJB
+    InversorFacadeLocal inversorCon;
     /**
      * Creates a new instance of InicioAdministradorController
      */
@@ -58,12 +68,39 @@ public class InicioAdministradorController implements Serializable{
         return "login?faces-redirect=true";
     }
     
+    public void agregarInversor(){
+        DTOInversor dtoInversor = new DTOInversor();
+        DTOCuenta dtoCuenta = new DTOCuenta();
+        dtoInversor.setNombre(nombre);
+        dtoCuenta.setNumeroCuenta(cuenta);
+        inversorCon.crearInversor(dtoInversor, dtoCuenta);
+        FacesContext context = FacesContext.getCurrentInstance();
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Agregado",
+                    "Inversor "+nombre+" agregado satisfactoriamente"));
+    }
+    
     public DTOUsuario getUser() {
         return user;
     }
 
     public void setUser(DTOUsuario user) {
         this.user = user;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(String cuenta) {
+        this.cuenta = cuenta;
     }
     
     
